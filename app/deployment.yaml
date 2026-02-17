@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: production-app-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: production-app
+  template:
+    metadata:
+      labels:
+        app: production-app
+    spec:
+      containers:
+      - name: production-app-container
+        image: 624909705616.dkr.ecr.eu-north-1.amazonaws.com/production-app-repository:latest
+        ports:
+        - containerPort: 80
